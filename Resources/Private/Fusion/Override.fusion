@@ -1,0 +1,4 @@
+prototype(Neos.Neos:Page).outdatedBrowser = Jonnitto.OutdatedBrowser:Component {
+    @position = 'before closingBodyTag'
+    @if.isLive = ${node.context.live}
+}

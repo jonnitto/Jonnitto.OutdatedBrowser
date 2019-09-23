@@ -1,0 +1,39 @@
+{
+    "name": "jonnitto/outdatedbrowser",
+    "type": "neos-plugin",
+    "license": "GPL-3.0-or-later",
+    "description": "Outdated Browser for Neos CMS",
+    "keywords": ["flow", "neos", "Outdated Browser"],
+    "authors": [
+        {
+            "name": "Jon Uhlmann",
+            "email": "me@jonnitto.ch",
+            "homepage": "https://twitter.com/jonnitto",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "neos/neos": "^3.3 || ^4.0 || ^5.0",
+        "neos/fusion-afx": "^1.1",
+        "carbon/eel": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jonnitto\\OutdatedBrowser\\": "Classes"
+        }
+    },
+    "archive": {
+        "exclude": [
+            ".editorconfig",
+            ".gitignore",
+            ".gitattributes",
+            "package.json"
+        ]
+    },
+    "extra": {
+        "installer-name": "Jonnitto.OutdatedBrowser",
+        "neos": {
+            "package-key": "Jonnitto.OutdatedBrowser"
+        }
+    }
+}
