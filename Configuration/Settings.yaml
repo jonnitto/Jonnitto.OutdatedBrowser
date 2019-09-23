@@ -12,7 +12,7 @@ Jonnitto:
     # Browser based: A23, IE8, IE9, IE10, IE11 or Edge
     # Feature based: Flexbox, oldGrid or Grid
     # Property based: Any CSS property
-    lowerThan: Edges
+    lowerThan: Edge
     presets:
       IE8: borderSpacing
       IE9: boxShadow
