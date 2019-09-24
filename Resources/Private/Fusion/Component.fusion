@@ -50,16 +50,16 @@ prototype(Jonnitto.OutdatedBrowser:Component) < prototype(Neos.Fusion:Component)
     JSFile = ${this.includeJS && this.implementation ? 'resource://Jonnitto.OutdatedBrowser/Public/' + this.implementation + '.js' : false}
     presets = ${Configuration.setting('Jonnitto.OutdatedBrowser.presets')}
     preset = ${Array.indexOf(Array.keys(this.presets), this.lowerThan) != -1 ? this.presets[this.lowerThan] : this.lowerThan}
-    markup = ${Carbon.FileContent.path('resource://Jonnitto.OutdatedBrowser/Private/Templates/' + this.language + '.html')}
+    markup = ${File.readFile('resource://Jonnitto.OutdatedBrowser/Private/Templates/' + this.language + '.html')}
     markup.@process.addTarget = ${String.replace(value, 'id="btnUpdateBrowser"', 'id="btnUpdateBrowser" rel="noopener" target="_blank"')}
 
     @if.hasPreset = ${this.preset}
 
     renderer = afx`
         <div id='outdated' data-lowerthan={props.preset}>
-            <style @if.set={props.CSSFile}>{Carbon.FileContent.path(props.CSSFile)}</style>
+            <style @if.set={props.CSSFile}>{File.readFile(props.CSSFile)}</style>
             {props.markup}
-            <script @if.set={props.JSFile}>{Carbon.FileContent.path(props.JSFile)}</script>
+            <script @if.set={props.JSFile}>{File.readFile(props.JSFile)}</script>
         </div>
     `
 

@@ -13,9 +13,10 @@
 
 This package includes [Outdated Browser](http://outdatedbrowser.com/) into [Neos CMS](https://www.neos.io). You can configure in your [`Settings.yaml`](Configuration/Settings.yaml) when the warning should be shown.
 
-| Version | Neos                |
-| ------- | ------------------- |
-| 1.\*    | 3.3.\*, 4.\* & 5.\* |
+| Version | Neos                 |
+| ------- | -------------------- |
+| 1.\*    | 3.3.\* + 4.\* + 5.\* |
+| 2.\*    | 4.\* + 5.\*          |
 
 ## Installation
 
@@ -55,4 +56,5 @@ Jonnitto:
 ```
 
 ## Credits
+
 This package is based on [Dotpulse.OutdatedBrowser](https://github.com/dotpulse/Dotpulse.OutdatedBrowser), who was also written by me. As dotpulse is not a company with active developers anymore and I have no access to the repository on packagist, I refactored the package and published it here.
