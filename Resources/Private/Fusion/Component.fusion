@@ -51,7 +51,10 @@ prototype(Jonnitto.OutdatedBrowser:Component) < prototype(Neos.Fusion:Component)
     presets = ${Configuration.setting('Jonnitto.OutdatedBrowser.presets')}
     preset = ${Array.indexOf(Array.keys(this.presets), this.lowerThan) != -1 ? this.presets[this.lowerThan] : this.lowerThan}
     markup = ${File.readFile('resource://Jonnitto.OutdatedBrowser/Private/Templates/' + this.language + '.html')}
-    markup.@process.addTarget = ${String.replace(value, 'id="btnUpdateBrowser"', 'id="btnUpdateBrowser" rel="noopener" target="_blank"')}
+    markup.@process {
+        addTarget = ${String.replace(value, 'id="btnUpdateBrowser"', 'id="btnUpdateBrowser" rel="nofollow noopener" target="_blank"')}
+        replaceUrl = ${String.replace(value, 'http://outdatedbrowser.com', 'https://bestvpn.org/outdatedbrowser')}
+    }
 
     @if.hasPreset = ${this.preset}
 
