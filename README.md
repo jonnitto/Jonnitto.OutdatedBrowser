@@ -21,7 +21,7 @@ The `--no-update` command prevent the automatic update of the dependencies. Afte
 
 ## Configuration
 
-Basicly you need to ajust the setting `Jonnitto.OutdatedBrowser.lowerThan`. The default value is `IE11`.
+Basicly you need to ajust the setting `Jonnitto.OutdatedBrowser.lowerThan`. The default value is `Edge`.
 You can set the setting `Jonnitto.OutdatedBrowser.lowerThan` to different kind of values:
 
 -   Browser based
