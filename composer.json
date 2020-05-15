@@ -3,7 +3,11 @@
     "type": "neos-plugin",
     "license": "GPL-3.0-or-later",
     "description": "Outdated Browser for Neos CMS",
-    "keywords": ["flow", "neos", "Outdated Browser"],
+    "keywords": [
+        "flow",
+        "neos",
+        "Outdated Browser"
+    ],
     "authors": [
         {
             "name": "Jon Uhlmann",
@@ -13,8 +17,11 @@
         }
     ],
     "require": {
-        "neos/neos": "^4.0 || ^5.0",
+        "neos/neos": "^4.3 || ^5.0",
         "neos/fusion-afx": "^1.1"
+    },
+    "conflict": {
+        "dotpulse/outdatedbrowser": "*"
     },
     "autoload": {
         "psr-4": {

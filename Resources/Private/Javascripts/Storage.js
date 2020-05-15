@@ -1,12 +1,12 @@
-(function() {
+(function () {
     var outdated = document.getElementById("outdated");
     if (outdated) {
         var data = outdated.getAttribute("data-lowerthan");
-        var cssProp = data ? data : "transform";
-        var validBrowser = false;
+        var testArray = data ? data.split(",") : ["transform"];
+        var validBrowser = true;
         var storage = {
             name: "outdatedbrowser",
-            value: "hide"
+            value: "hide",
         };
 
         function removeElement() {
@@ -19,41 +19,37 @@
             return false;
         }
 
-        function checkCssProp() {
-            if (sessionStorage.getItem(storage.name) == storage.value) {
-                removeElement();
-            } else {
-                var supports = (function() {
-                    var style = document.createElement("div").style;
-                    var vendors = ["Moz", "O", "ms", "Webkit", "Khtml"];
-                    var length = vendors.length;
+        function supportsCSSProp(prop) {
+            var style = document.createElement("div").style;
+            var vendors = ["Moz", "O", "ms", "Webkit", "Khtml"];
+            var length = vendors.length;
+            if (prop in style) {
+                return true;
+            }
+            prop = prop.replace(/(?:^|-)(\w)/g, function (matches, letter) {
+                return letter.toUpperCase();
+            });
 
-                    return function(prop) {
-                        if (prop in style) {
-                            return true;
-                        }
+            while (length--) {
+                if (vendors[length] + prop in style) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-                        prop = prop.replace(/(?:^|-)(\w)/g, function(
-                            matches,
-                            letter
-                        ) {
-                            return letter.toUpperCase();
-                        });
-
-                        while (length--) {
-                            if (vendors[length] + prop in style) {
-                                return true;
-                            }
-                        }
-                        return false;
-                    };
-                })();
-
+        if (sessionStorage.getItem(storage.name) == storage.value) {
+            removeElement();
+        } else {
+            // check all the props
+            for (var index = 0; index < testArray.length; index++) {
+                var testString = testArray[index];
+                var check = false;
                 // browser check by js props
-                if (/^js:+/g.test(cssProp)) {
-                    var jsProp = cssProp.split(":")[1];
+                if (/^js:+/g.test(testString)) {
+                    var jsProp = testString.split(":")[1];
                     if (jsProp && jsProp == "Promise") {
-                        validBrowser =
+                        check =
                             window.Promise !== undefined &&
                             window.Promise !== null &&
                             Object.prototype.toString.call(
@@ -61,20 +57,23 @@
                             ) === "[object Promise]";
                     }
                 } else {
-                    validBrowser = supports("" + cssProp + "");
+                    check = supportsCSSProp("" + testString + "");
                 }
-
-                if (validBrowser) {
-                    removeElement();
-                } else {
-                    outdated.style.display = "block";
-                    document.getElementById(
-                        "btnCloseUpdateBrowser"
-                    ).onmousedown = hide;
+                if (!check) {
+                    // If the check fails, set validBrowser to false and cancel the loop
+                    validBrowser = false;
+                    break;
                 }
             }
-        }
 
-        checkCssProp();
+            if (validBrowser) {
+                removeElement();
+            } else {
+                outdated.style.display = "block";
+                document.getElementById(
+                    "btnCloseUpdateBrowser"
+                ).onmousedown = hide;
+            }
+        }
     }
 })();

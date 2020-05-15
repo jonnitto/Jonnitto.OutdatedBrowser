@@ -8,6 +8,7 @@ This package includes [Outdated Browser] into [Neos CMS]. You can configure in y
 | ------- | -------------------- |
 | 1.\*    | 3.3.\* + 4.\* + 5.\* |
 | 2.\*    | 4.\* + 5.\*          |
+| 3.\*    | 4.3.\* + 5.\*        |
 
 ## Installation
 
@@ -44,6 +45,16 @@ Example:
 Jonnitto:
   OutdatedBrowser:
     lowerThan: Grid
+```
+
+If you want to check for multiple features, you can write lowerThan also an an array, for example:
+
+```yaml
+Jonnitto:
+  OutdatedBrowser:
+    lowerThan:
+        - Edge
+        - grid-auto-flow
 ```
 
 ## Credits
