@@ -1,17 +1,8 @@
-[![Latest Stable Version](https://poser.pugx.org/jonnitto/outdatedbrowser/v/stable)](https://packagist.org/packages/jonnitto/outdatedbrowser)
-[![Total Downloads](https://poser.pugx.org/jonnitto/outdatedbrowser/downloads)](https://packagist.org/packages/jonnitto/outdatedbrowser)
-[![License](https://poser.pugx.org/jonnitto/outdatedbrowser/license)](https://packagist.org/packages/jonnitto/outdatedbrowser)
-[![GitHub forks](https://img.shields.io/github/forks/jonnitto/Jonnitto.OutdatedBrowser.svg?style=social&label=Fork)](https://github.com/jonnitto/Jonnitto.OutdatedBrowser/fork)
-[![Support development](https://img.shields.io/badge/Donate-PayPal-yellow.svg)](https://www.paypal.me/Jonnitto/20eur)
-[![My wishlist on amazon](https://img.shields.io/badge/Wishlist-Amazon-yellow.svg)](https://www.amazon.de/hz/wishlist/ls/2WPGORAVYF39B?&sort=default)  
-[![GitHub stars](https://img.shields.io/github/stars/jonnitto/Jonnitto.OutdatedBrowser.svg?style=social&label=Stars)](https://github.com/jonnitto/Jonnitto.OutdatedBrowser/stargazers)
-[![GitHub watchers](https://img.shields.io/github/watchers/jonnitto/Jonnitto.OutdatedBrowser.svg?style=social&label=Watch)](https://github.com/jonnitto/Jonnitto.OutdatedBrowser/subscription)
-[![GitHub followers](https://img.shields.io/github/followers/jonnitto.svg?style=social&label=Follow)](https://github.com/jonnitto/followers)
-[![Follow Jon on Twitter](https://img.shields.io/twitter/follow/jonnitto.svg?style=social&label=Follow)](https://twitter.com/jonnitto)
+[![Latest stable version]][packagist] [![Total downloads]][packagist] [![License]][packagist] [![GitHub forks]][fork] [![Donate Paypal]][paypal] [![Wishlist amazon]][amazon] [![GitHub stars]][stargazers] [![GitHub watchers]][subscription] [![GitHub followers]][followers] [![Follow Jon on Twitter]][twitter]
 
 # Jonnitto.OutdatedBrowser
 
-This package includes [Outdated Browser](http://outdatedbrowser.com/) into [Neos CMS](https://www.neos.io). You can configure in your [`Settings.yaml`](Configuration/Settings.yaml) when the warning should be shown.
+This package includes [Outdated Browser] into [Neos CMS]. You can configure in your [`Settings.yaml`] when the warning should be shown.
 
 | Version | Neos                 |
 | ------- | -------------------- |
@@ -20,7 +11,7 @@ This package includes [Outdated Browser](http://outdatedbrowser.com/) into [Neos
 
 ## Installation
 
-Most of the time you have to make small adjustments to a package (e.g. configuration in [`Settings.yaml`](Configuration/Settings.yaml)). Because of that, it is important to add the corresponding package to the composer from your theme package. Mostly this is the site packages located under `Packages/Sites/`. To install it correctly go to your theme package (e.g.`Packages/Sites/Foo.Bar`) and run following command:
+Most of the time you have to make small adjustments to a package (e.g. configuration in [`Settings.yaml`]). Because of that, it is important to add the corresponding package to the composer from your theme package. Mostly this is the site packages located under `Packages/Sites/`. To install it correctly go to your theme package (e.g.`Packages/Sites/Foo.Bar`) and run following command:
 
 ```bash
 composer require jonnitto/outdatedbrowser --no-update
@@ -57,4 +48,28 @@ Jonnitto:
 
 ## Credits
 
-This package is based on [Dotpulse.OutdatedBrowser](https://github.com/dotpulse/Dotpulse.OutdatedBrowser), who was also written by me. As dotpulse is not a company with active developers anymore and I have no access to the repository on packagist, I refactored the package and published it here.
+This package is based on [Dotpulse.OutdatedBrowser], who was also written by me. As dotpulse is not a company with active developers anymore and I have no access to the repository on packagist, I refactored the package and published it here.
+
+[packagist]: https://packagist.org/packages/jonnitto/outdatedbrowser
+[latest stable version]: https://poser.pugx.org/jonnitto/outdatedbrowser/v/stable
+[total downloads]: https://poser.pugx.org/jonnitto/outdatedbrowser/downloads
+[license]: https://poser.pugx.org/jonnitto/outdatedbrowser/license
+[github forks]: https://img.shields.io/github/forks/jonnitto/Jonnitto.OutdatedBrowser.svg?style=social&label=Fork
+[donate paypal]: https://img.shields.io/badge/Donate-PayPal-yellow.svg
+[wishlist amazon]: https://img.shields.io/badge/Wishlist-Amazon-yellow.svg
+[amazon]: https://www.amazon.de/hz/wishlist/ls/2WPGORAVYF39B?&sort=default
+[paypal]: https://www.paypal.me/Jonnitto/20eur
+[github stars]: https://img.shields.io/github/stars/jonnitto/Jonnitto.OutdatedBrowser.svg?style=social&label=Stars
+[github watchers]: https://img.shields.io/github/watchers/jonnitto/Jonnitto.OutdatedBrowser.svg?style=social&label=Watch
+[github followers]: https://img.shields.io/github/followers/jonnitto.svg?style=social&label=Follow
+[follow jon on twitter]: https://img.shields.io/twitter/follow/jonnitto.svg?style=social&label=Follow
+[twitter]: https://twitter.com/jonnitto
+[fork]: https://github.com/jonnitto/Jonnitto.OutdatedBrowser/fork
+[stargazers]: https://github.com/jonnitto/Jonnitto.OutdatedBrowser/stargazers
+[subscription]: https://github.com/jonnitto/Jonnitto.OutdatedBrowser/subscription
+[followers]: https://github.com/jonnitto/followers
+[license]: LICENSE
+[outdated browser]: http://outdatedbrowser.com/
+[neos cms]: https://www.neos.io
+[`settings.yaml`]: Configuration/Settings.yaml
+[dotpulse.outdatedbrowser]: https://github.com/dotpulse/Dotpulse.OutdatedBrowser
