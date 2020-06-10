@@ -1,0 +1,8 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        'Jonnitto.OutdatedBrowser': true
+  Fusion:
+    defaultContext:
+      Jonnitto.OutdatedBrowser: 'Jonnitto\OutdatedBrowser\Eel\OutdatedBrowserHelper'
