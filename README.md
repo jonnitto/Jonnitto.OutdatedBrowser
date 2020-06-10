@@ -58,6 +58,14 @@ Jonnitto:
         - grid-auto-flow
 ```
 
+Per default, the package checks if the visitor is a crawler or not. If it is a crawler, the warning doesn't get rendered at all. You can disable this behavior like this:
+
+```yaml
+Jonnitto:
+  OutdatedBrowser:
+    disableForCrawler: false
+```
+
 ## Credits
 
 This package is based on [Dotpulse.OutdatedBrowser], who was also written by me. As dotpulse is not a company with active developers anymore and I have no access to the repository on packagist, I refactored the package and published it here.
