@@ -28,14 +28,6 @@
             "Jonnitto\\OutdatedBrowser\\": "Classes"
         }
     },
-    "archive": {
-        "exclude": [
-            ".editorconfig",
-            ".gitignore",
-            ".gitattributes",
-            "package.json"
-        ]
-    },
     "extra": {
         "installer-name": "Jonnitto.OutdatedBrowser",
         "neos": {
