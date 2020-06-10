@@ -1,4 +1,4 @@
-prototype(Jonnitto.OutdatedBrowser:Component) < prototype(Neos.Fusion:Component) {
+prototype(Jonnitto.OutdatedBrowser:Component.Presentation) < prototype(Neos.Fusion:Component) {
     lowerThan = ${Configuration.setting('Jonnitto.OutdatedBrowser.lowerThan')}
     implementation = ${Configuration.setting('Jonnitto.OutdatedBrowser.implementation')}
 
@@ -19,8 +19,8 @@ prototype(Jonnitto.OutdatedBrowser:Component) < prototype(Neos.Fusion:Component)
 
     renderer = Neos.Fusion:Component {
         @apply.props = ${props}
-        CSSFile = ${this.includeCSS ? 'resource://Jonnitto.OutdatedBrowser/Public/Main.css' : false}
-        JSFile = ${this.includeJS && this.implementation ? 'resource://Jonnitto.OutdatedBrowser/Public/' + this.implementation + '.js' : false}
+        CSSFile = ${props.includeCSS ? 'resource://Jonnitto.OutdatedBrowser/Public/Main.css' : false}
+        JSFile = ${props.includeJS && props.implementation ? 'resource://Jonnitto.OutdatedBrowser/Public/' + props.implementation + '.js' : false}
 
         selectedLanguage = Neos.Fusion:Case {
             hasFile {
@@ -31,7 +31,7 @@ prototype(Jonnitto.OutdatedBrowser:Component) < prototype(Neos.Fusion:Component)
                     }
                     hasDimension {
                         condition = ${Configuration.setting('Neos.ContentRepository.contentDimensions.' + props.languageDimension) != null}
-                        renderer = ${String.replace(documentNode.context.dimensions.language[0], '_', '-')}
+                        renderer = ${String.replace(site.context.dimensions[props.languageDimension][0], '_', '-')}
                     }
                     hasDefaultLocale {
                         defaultLocale = ${Configuration.setting('Neos.Flow.i18n.defaultLocale')}
@@ -75,17 +75,5 @@ prototype(Jonnitto.OutdatedBrowser:Component) < prototype(Neos.Fusion:Component)
                 <script @if.set={props.JSFile}>{File.readFile(props.JSFile)}</script>
             </div>
         `
-    }
-
-    @cache {
-        mode = 'cached'
-        maximumLifetime = 0
-        entryIdentifier{
-            outdatedBrowser = 'outdatedbrowser'
-            node = ${site}
-        }
-        entryTags {
-            1 = ${Neos.Caching.nodeTag(site)}
-        }
     }
 }

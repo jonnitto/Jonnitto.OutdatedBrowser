@@ -1,0 +1,16 @@
+prototype(Jonnitto.OutdatedBrowser:Component.Integration) < prototype(Neos.Fusion:Component) {
+    disableForCrawler = ${Configuration.setting('Jonnitto.OutdatedBrowser.disableForCrawler')}
+
+    @if.isLive = ${node.context.live}
+
+    renderer = Neos.Fusion:Case {
+        disableForCrawler {
+            condition = ${props.disableForCrawler}
+            renderer = Jonnitto.OutdatedBrowser:Component.CrawlerDetection
+        }
+        static {
+            condition = true
+            renderer = Jonnitto.OutdatedBrowser:Component.Static
+        }
+    }
+}

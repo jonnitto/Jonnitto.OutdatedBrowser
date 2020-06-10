@@ -1,0 +1,13 @@
+prototype(Jonnitto.OutdatedBrowser:Component.Static) < prototype(Jonnitto.OutdatedBrowser:Component.Presentation) {
+    @cache {
+        mode = 'cached'
+        maximumLifetime = 0
+        entryIdentifier {
+            outdatedBrowser = 'outdatedbrowser'
+            site = ${site}
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}

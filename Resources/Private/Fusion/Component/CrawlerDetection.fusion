@@ -1,0 +1,21 @@
+prototype(Jonnitto.OutdatedBrowser:Component.CrawlerDetection) < prototype(Jonnitto.OutdatedBrowser:Component.Presentation) {
+    isCrawler = ${Jonnitto.OutdatedBrowser.isCrawler()}
+    @if.isNotCrawler = ${!this.isCrawler}
+
+    @cache {
+        mode = 'dynamic'
+        maximumLifetime = 0
+        entryIdentifier {
+            outdatedBrowser = 'outdatedbrowser'
+            site = ${site}
+        }
+        entryDiscriminator = ${Jonnitto.OutdatedBrowser.isCrawler() ? 'crawler' : 'visitor'}
+        context {
+            1 = 'site'
+            2 = 'documentNode'
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(site)}
+        }
+    }
+}

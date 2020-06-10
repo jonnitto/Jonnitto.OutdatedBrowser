@@ -14,14 +14,13 @@ class OutdatedBrowserHelper implements ProtectedContextAwareInterface
 
     /**
      * Check if visitor is a crawler
-     *
+     * 
      * @return bool
      */
-    public function isCrawler($httpRequest)
+    public function isCrawler(): bool
     {
-        $CrawlerDetect = new CrawlerDetect;
-        $userAgent = is_string($httpRequest) ? $httpRequest : $httpRequest->getHeader('User-Agent');
-        return $CrawlerDetect->isCrawler($userAgent);
+        $crawlerDetect = new CrawlerDetect;
+        return $crawlerDetect->isCrawler();
     }
 
     /**

@@ -1,7 +1,3 @@
-prototype(Neos.Neos:Page).outdatedBrowser = Jonnitto.OutdatedBrowser:Component {
+prototype(Neos.Neos:Page).outdatedBrowser = Jonnitto.OutdatedBrowser:Component.Integration {
     @position = 'before closingBodyTag'
-    @if {
-        isNotCrawler = ${Configuration.setting('Jonnitto.OutdatedBrowser.disableForCrawler') ? !Jonnitto.OutdatedBrowser.isCrawler(request.httpRequest) : true}
-        isLive = ${node.context.live}
-    }
 }
