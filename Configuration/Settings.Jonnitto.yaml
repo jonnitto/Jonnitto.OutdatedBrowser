@@ -1,5 +1,7 @@
 Jonnitto:
   OutdatedBrowser:
+    # If `true`, the warning will disabled if the visitor is a crawler
+    disableForCrawler: true
     # Set to `Storage` or `Cookie`
     implementation: Storage
     fallbackLanguage: en
