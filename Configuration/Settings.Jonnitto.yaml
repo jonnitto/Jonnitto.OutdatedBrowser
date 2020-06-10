@@ -1,6 +1,6 @@
 Jonnitto:
   OutdatedBrowser:
-    # If `true`, the warning will disabled if the visitor is a crawler
+    # If `true`, the warning will be disabled if the visitor is a crawler
     disableForCrawler: true
     # Set to `Storage` or `Cookie`
     implementation: Storage
@@ -9,7 +9,7 @@ Jonnitto:
     # Feature based: Flexbox, oldGrid or Grid
     # Property based: Any CSS property
     # If you want to check for multiple features, you can
-    # write lowerThan also an an array, for example:
+    # write lowerThan also an array, for example:
     # lowerThan: ['Edge', 'grid-auto-flow']
     lowerThan: Edge
     presets:
