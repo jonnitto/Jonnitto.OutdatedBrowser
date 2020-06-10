@@ -48,7 +48,7 @@ Jonnitto:
     lowerThan: Grid
 ```
 
-If you want to check for multiple features, you can write lowerThan also an an array, for example:
+If you want to check for multiple features, you can write `lowerThan` also an array, for example:
 
 ```yaml
 Jonnitto:
