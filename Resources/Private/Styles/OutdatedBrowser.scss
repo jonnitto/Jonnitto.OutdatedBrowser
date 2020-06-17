@@ -20,13 +20,7 @@ $outdated-browser-fontsize-close: 36px !default;
   background-color: $outdated-browser-backgroundcolor;
   color: $outdated-browser-color;
   padding-bottom: $outdated-browser-padding-bottom;
-
-  h6 {
-    font-size: $outdated-browser-fontsize-headline;
-    line-height: 1;
-    margin: 1.2em 30px 0.4em;
-    color: $outdated-browser-color;
-  }
+  letter-spacing: 0.1em;
 
   p {
     font-size: $outdated-browser-fontsize-paragraph;
@@ -34,6 +28,12 @@ $outdated-browser-fontsize-close: 36px !default;
     margin: 0 auto;
     text-indent: 0;
     color: $outdated-browser-color;
+
+    strong {
+      display: block;
+      font-size: $outdated-browser-fontsize-headline;
+      margin: 1.2em 30px 0.4em;
+    }
   }
 
   #btnUpdateBrowser {
@@ -53,14 +53,14 @@ $outdated-browser-fontsize-close: 36px !default;
     }
   }
 
-  .last {
+  .outdated-last {
     position: absolute;
     top: 10px;
     right: 25px;
     width: 20px;
     height: 20px;
 
-    &[dir='rtl'] {
+    &[dir="rtl"] {
       right: auto !important;
       left: 25px !important;
     }
