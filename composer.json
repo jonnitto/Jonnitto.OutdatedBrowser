@@ -18,7 +18,7 @@
     ],
     "require": {
         "neos/neos": "^4.3 || ^5.0 || ^7.0",
-        "neos/fusion-afx": "^1.1",
+        "neos/fusion-afx": "^1.1 || ^7.0",
         "jaybizzle/crawler-detect": "^1.2"
     },
     "conflict": {
