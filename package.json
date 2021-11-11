@@ -6,10 +6,10 @@
   },
   "private": true,
   "devDependencies": {
-    "cssnano-cli": "latest",
-    "node-sass": "latest",
-    "uglifyify": "latest",
-    "uglify-js": "latest"
+    "cssnano-cli": "^1.0.5",
+    "node-sass": "^6.0.1",
+    "uglify-js": "^3.14.3",
+    "uglifyify": "^5.0.2"
   },
   "scripts": {
     "build:js:cookie": "uglifyjs Resources/Private/Javascripts/Cookie.js --mangle --compress --output Resources/Public/Cookie.js",
