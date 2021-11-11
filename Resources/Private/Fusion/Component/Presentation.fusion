@@ -56,13 +56,7 @@ prototype(Jonnitto.OutdatedBrowser:Component.Presentation) < prototype(Neos.Fusi
             }
         }
         markup = ${File.readFile('resource://Jonnitto.OutdatedBrowser/Private/Templates/' + this.selectedLanguage + '.html')}
-        markup.@process {
-            addTarget = ${String.replace(value, 'id="btnUpdateBrowser"', 'id="btnUpdateBrowser" rel="nofollow noopener" target="_blank"')}
-            replaceUrl = ${String.replace(value, 'http://outdatedbrowser.com', 'https://bestvpn.org/outdatedbrowser')}
-            replaceHeadlineTagOpen = ${String.replace(value, '<h6>', '<p><strong>')}
-            replaceHeadlineTagClose = ${String.replace(value, '</h6>', '</strong></p>')}
-            replaceLastClass = ${String.replace(value, ' class="last"', ' class="outdated-last"')}
-        }
+        markup.@process.cleanup = ${Jonnitto.OutdatedBrowser.cleanMarkup(value)}
 
         featureArray = Neos.Fusion:Map {
             items = ${Type.isArray(props.lowerThan) ? props.lowerThan : [props.lowerThan]}

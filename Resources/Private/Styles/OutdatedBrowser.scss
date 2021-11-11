@@ -72,9 +72,11 @@ $outdated-browser-fontsize-close: 36px !default;
     width: 100%;
     height: 100%;
     text-decoration: none;
+    padding: 0;
     color: $outdated-browser-color;
     font-size: $outdated-browser-fontsize-close;
     line-height: $outdated-browser-fontsize-close;
+    font-weight: 300;
   }
 
   * html & {
