@@ -4,12 +4,13 @@
 
 This package includes [Outdated Browser] into [Neos CMS]. You can configure in your [`Settings.yaml`] when the warning should be shown.
 
-| Version | Neos                 | Maintained |
-| ------- | -------------------- | :--------: |
-| 1.\*    | 3.3.\* + 4.\* + 5.\* |     ✗      |
-| 2.\*    | 4.\* + 5.\*          |     ✗      |
-| 3.\*    | 4.3.\* + 5.\*        |     ✗      |
-| 4.\*    | 4.3.\* + 5.\* + 7.\* |     ✓      |
+| Version | Neos          | Maintained |
+| ------- | ------------- | :--------: |
+| 1.\*    | 3.3.\* - 5.\* |     ✗      |
+| 2.\*    | 4.\* - 5.\*   |     ✗      |
+| 3.\*    | 4.3.\* - 5.\* |     ✗      |
+| 4.\*    | 4.3.\* - 7.\* |     ✗      |
+| 4.3.\*  | 5.3.\* - 8.\* |     ✓      |
 
 ## Installation
 
