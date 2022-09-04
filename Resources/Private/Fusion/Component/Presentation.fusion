@@ -3,7 +3,7 @@ prototype(Jonnitto.OutdatedBrowser:Component.Presentation) < prototype(Neos.Fusi
     implementation = ${Configuration.setting('Jonnitto.OutdatedBrowser.implementation')}
 
     // Set the language to a specific one
-    language = null
+    language = ${null}
 
     languageDimension = 'language'
     includeCSS = true
