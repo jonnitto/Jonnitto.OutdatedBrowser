@@ -25,7 +25,7 @@ The `--no-update` command prevent the automatic update of the dependencies. Afte
 
 ## Configuration
 
-Basicly you need to ajust the setting `Jonnitto.OutdatedBrowser.lowerThan`. The default value is `Edge`.
+Basicly you need to ajust the setting `Jonnitto.OutdatedBrowser.lowerThan`. The default value is `AccentColor`.
 You can set the setting `Jonnitto.OutdatedBrowser.lowerThan` to different kind of values:
 
 - Browser based

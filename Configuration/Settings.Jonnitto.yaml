@@ -16,7 +16,7 @@ Jonnitto:
     # If you want to check for multiple features, you can
     # write lowerThan also an array, for example:
     # lowerThan: ['Edge', 'grid-auto-flow']
-    lowerThan: Edge
+    lowerThan: AccentColor
 
     # Pass a additional CSS class to the warning
     class: null
