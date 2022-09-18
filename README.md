@@ -67,6 +67,14 @@ Jonnitto:
     disableForCrawler: false
 ```
 
+To add a CSS class the the element you can do it by adding following setting:
+
+```yaml
+Jonnitto:
+  OutdatedBrowser:
+    class: 'your-custom-css-class`
+```
+
 ## Credits
 
 This package is based on [Dotpulse.OutdatedBrowser], who was also written by me. As dotpulse is not a company with active developers anymore and I have no access to the repository on packagist, I refactored the package and published it here.
@@ -89,7 +97,6 @@ This package is based on [Dotpulse.OutdatedBrowser], who was also written by me.
 [stargazers]: https://github.com/jonnitto/Jonnitto.OutdatedBrowser/stargazers
 [subscription]: https://github.com/jonnitto/Jonnitto.OutdatedBrowser/subscription
 [followers]: https://github.com/jonnitto/followers
-[license]: LICENSE
 [outdated browser]: http://outdatedbrowser.com/
 [neos cms]: https://www.neos.io
 [`settings.yaml`]: Configuration/Settings.yaml
