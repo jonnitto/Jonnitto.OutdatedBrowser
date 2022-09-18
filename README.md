@@ -2,7 +2,7 @@
 
 # Jonnitto.OutdatedBrowser
 
-This package includes [Outdated Browser] into [Neos CMS]. You can configure in your [`Settings.yaml`] when the warning should be shown.
+This package includes a notification for outdated browsers into [Neos CMS]. You can configure in your [`Settings.yaml`] when the warning should be shown.
 
 | Version | Neos          | Maintained |
 | ------- | ------------- | :--------: |
@@ -10,7 +10,8 @@ This package includes [Outdated Browser] into [Neos CMS]. You can configure in y
 | 2.\*    | 4.\* - 5.\*   |     ✗      |
 | 3.\*    | 4.3.\* - 5.\* |     ✗      |
 | 4.\*    | 4.3.\* - 7.\* |     ✗      |
-| 4.3.\*  | 5.3.\* - 8.\* |     ✓      |
+| 4.3.\*  | 5.3.\* - 8.\* |     ✗      |
+| 5.\*    | 5.3.\* - 8.\* |     ✓      |
 
 ## Installation
 
@@ -27,26 +28,28 @@ The `--no-update` command prevent the automatic update of the dependencies. Afte
 Basicly you need to ajust the setting `Jonnitto.OutdatedBrowser.lowerThan`. The default value is `Edge`.
 You can set the setting `Jonnitto.OutdatedBrowser.lowerThan` to different kind of values:
 
--   Browser based
-    -   `A23` (Android 2.3)
-    -   `IE8`
-    -   `IE9`
-    -   `IE10`
-    -   `IE11`
-    -   `Edge`
--   Feature based
-    -   `Flexbox`
-    -   `oldGrid` (The old css grid specification)
-    -   `Grid`
--   Property based
-    -   Any CSS property, e. g. `transform`
+- Browser based
+  - `A23` (Android 2.3)
+  - `IE8`
+  - `IE9`
+  - `IE10`
+  - `IE11`
+  - `Edge`
+- Feature based
+  - `Flexbox`
+  - `oldGrid` (The old css grid specification)
+  - `Grid`
+  - `AccentColor`
+  - `AspectRatio`
+- Property based
+  - Any CSS property, e. g. `transform`
 
 Example:
 
 ```yaml
 Jonnitto:
   OutdatedBrowser:
-    lowerThan: Grid
+    lowerThan: AspectRatio
 ```
 
 If you want to check for multiple features, you can write `lowerThan` also an array, for example:
@@ -57,6 +60,14 @@ Jonnitto:
     lowerThan:
         - Edge
         - grid-auto-flow
+```
+
+To change the link to the website who helps the user to download a new browser, you can do it by alter the setting `Jonnitto.OutdatedBrowser.href`. `{locale}` gets replaced with the detected locale. The default value is `https://browsehappy.com/?locale={locale}`
+
+```yaml
+Jonnitto:
+  OutdatedBrowser:
+   href: "https://browser-update.org/{locale}/"
 ```
 
 Per default, the package checks if the visitor is a crawler or not. If it is a crawler, the warning doesn't get rendered at all. You can disable this behavior like this:
@@ -97,7 +108,6 @@ This package is based on [Dotpulse.OutdatedBrowser], who was also written by me.
 [stargazers]: https://github.com/jonnitto/Jonnitto.OutdatedBrowser/stargazers
 [subscription]: https://github.com/jonnitto/Jonnitto.OutdatedBrowser/subscription
 [followers]: https://github.com/jonnitto/followers
-[outdated browser]: http://outdatedbrowser.com/
 [neos cms]: https://www.neos.io
 [`settings.yaml`]: Configuration/Settings.yaml
 [dotpulse.outdatedbrowser]: https://github.com/dotpulse/Dotpulse.OutdatedBrowser
