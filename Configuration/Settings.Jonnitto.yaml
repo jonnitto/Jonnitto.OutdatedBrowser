@@ -4,25 +4,32 @@ Jonnitto:
     href: 'https://bestvpn.org/outdatedbrowser/{locale}'
     # If `true`, the warning will be disabled if the visitor is a crawler
     disableForCrawler: true
+
     # Set to `Storage` or `Cookie`
     implementation: Storage
     fallbackLanguage: en
+
     # Browser based: A23, IE8, IE9, IE10, IE11 or Edge
-    # Feature based: Flexbox, oldGrid or Grid
+    # Feature based: Flexbox, oldGrid, Grid, AccentColor or AspectRatio
     # Property based: Any CSS property
     # If you want to check for multiple features, you can
     # write lowerThan also an array, for example:
     # lowerThan: ['Edge', 'grid-auto-flow']
     lowerThan: Edge
+
     # Pass a additional CSS class to the warning
     class: null
+
+    # Presets for the warning
     presets:
       IE8: borderSpacing
       IE9: boxShadow
       IE10: transform
       IE11: borderImage
-      Edge: js:Promise
+      Edge: scroll-snap-stop
+      A23: writing-mode
       Flexbox: flex-wrap
       oldGrid: grid-row
       Grid: grid-auto-flow
-      A23: writing-mode
+      AccentColor: accent-color
+      AspectRatio: aspect-ratio

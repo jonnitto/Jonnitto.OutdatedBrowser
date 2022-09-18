@@ -1,8 +1,7 @@
 (function () {
     var outdated = document.getElementById("outdated");
     if (outdated) {
-        var data = outdated.getAttribute("data-lowerthan");
-        var testArray = data ? data.split(",") : ["transform"];
+        var testArray = outdated.getAttribute("data-lowerthan").split(",");
         var validBrowser = true;
         var hasCookie = false;
         if (navigator.cookieEnabled) {
@@ -51,22 +50,7 @@
             // check all the props
             for (var index = 0; index < testArray.length; index++) {
                 var testString = testArray[index];
-                var check = false;
-
-                // browser check by js props
-                if (/^js:+/g.test(testString)) {
-                    var jsProp = testString.split(":")[1];
-                    if (jsProp && jsProp == "Promise") {
-                        check =
-                            window.Promise !== undefined &&
-                            window.Promise !== null &&
-                            Object.prototype.toString.call(
-                                window.Promise.resolve()
-                            ) === "[object Promise]";
-                    }
-                } else {
-                    check = supportsCSSProp("" + testString + "");
-                }
+                var check = supportsCSSProp("" + testString + "");
                 if (!check) {
                     // If the check fails, set validBrowser to false and cancel the loop
                     validBrowser = false;
@@ -78,9 +62,8 @@
                 removeElement();
             } else {
                 outdated.style.display = "block";
-                document.getElementById(
-                    "btnCloseUpdateBrowser"
-                ).onmousedown = hide;
+                document.getElementById("btnCloseUpdateBrowser").onmousedown =
+                    hide;
             }
         }
     }
