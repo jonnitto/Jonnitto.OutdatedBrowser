@@ -2,6 +2,7 @@ prototype(Jonnitto.OutdatedBrowser:Component.Presentation) < prototype(Neos.Fusi
     href = ${Configuration.setting('Jonnitto.OutdatedBrowser.href')}
     lowerThan = ${Configuration.setting('Jonnitto.OutdatedBrowser.lowerThan')}
     implementation = ${Configuration.setting('Jonnitto.OutdatedBrowser.implementation')}
+    class = ${Configuration.setting('Jonnitto.OutdatedBrowser.class')}
 
     // Set the language to a specific one
     language = ${null}
@@ -65,7 +66,7 @@ prototype(Jonnitto.OutdatedBrowser:Component.Presentation) < prototype(Neos.Fusi
         @if.hasFeatureArray = ${this._featureArray && Type.isArray(this._featureArray)}
 
         renderer = afx`
-            <div id='outdated' data-lowerthan={Array.join(props._featureArray, ',')}>
+            <div id='outdated' class={props.class} data-lowerthan={Array.join(props._featureArray, ',')}>
                 <style @if.set={props._CSSFile}>{File.readFile(props._CSSFile)}</style>
                 {props._markup}
                 <script @if.set={props._JSFile}>{File.readFile(props._JSFile)}</script>
