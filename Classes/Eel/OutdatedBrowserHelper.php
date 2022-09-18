@@ -11,10 +11,9 @@ use Neos\Eel\ProtectedContextAwareInterface;
  */
 class OutdatedBrowserHelper implements ProtectedContextAwareInterface
 {
-
     /**
      * Check if visitor is a crawler
-     * 
+     *
      * @return bool
      */
     public function isCrawler(): bool
@@ -24,35 +23,15 @@ class OutdatedBrowserHelper implements ProtectedContextAwareInterface
     }
 
     /**
-     * Clean up markup from template
+     * Add domain to the template
      *
      * @param string $markup
      * @return string
      */
-    public function cleanMarkup(string $markup): string
+    public function replaceHref(string $markup, string $href, string $locale): string
     {
-
-        return str_replace(
-            [
-                'id="btnUpdateBrowser"',
-                'http://outdatedbrowser.com',
-                '<h6>',
-                '</h6>',
-                ' class="last"',
-                '<a href="#" id="btnCloseUpdateBrowser"',
-                '>&times;</a>'
-            ],
-            [
-                'id="btnUpdateBrowser" rel="nofollow noopener" target="_blank"',
-                'https://bestvpn.org/outdatedbrowser',
-                '<p><strong>',
-                '</strong></p>',
-                ' class="outdated-last"',
-                '<button type="button" id="btnCloseUpdateBrowser"',
-                '>&times;</button>'
-            ],
-            (string)$markup
-        );
+        $href = str_replace('{locale}', $locale, $href);
+        return str_replace('{href}', $href, (string) $markup);
     }
 
     /**
