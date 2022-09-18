@@ -14,6 +14,8 @@ Jonnitto:
     # write lowerThan also an array, for example:
     # lowerThan: ['Edge', 'grid-auto-flow']
     lowerThan: Edge
+    # Pass a additional CSS class to the warning
+    class: null
     presets:
       IE8: borderSpacing
       IE9: boxShadow
