@@ -14,63 +14,61 @@ prototype(Jonnitto.OutdatedBrowser:Component.Presentation) < prototype(Neos.Fusi
     fallbackLanguage = ${Configuration.setting('Jonnitto.OutdatedBrowser.fallbackLanguage')}
 
     // Internal
-    presets = ${Configuration.setting('Jonnitto.OutdatedBrowser.presets')}
+    _presets = ${Configuration.setting('Jonnitto.OutdatedBrowser.presets')}
+    _language = ${this.language && Type.isString(this.language) ? this.language : null}
+    _hasDimension = ${Configuration.setting('Neos.ContentRepository.contentDimensions.' + this.languageDimension) != null}
+    _dimensionLanguage = ${this._hasDimension ? site.context.dimensions[this.languageDimension][0] : null}
+    _defaultLocale = ${Configuration.setting('Neos.Flow.i18n.defaultLocale')}
+    _documentLanguage = ${String.toLowerCase(String.replace(this._language || this._dimensionLanguage || this._defaultLocale || this.fallbackLanguage, '_', '-'))}
+    _documentLanguageWithoutRegion = ${String.crop(this._documentLanguage, 2)}
+    _fallbackLanguage = ${this.fallbackLanguage && Type.isString(this.fallbackLanguage) ? String.toLowerCase(this.fallbackLanguage) : 'en'}
+    _fallbackLanguageWithoutRegion = ${String.crop(this._fallbackLanguage, 2)}
 
     @if.hasLowerThan = ${this.lowerThan}
 
     renderer = Neos.Fusion:Component {
         @apply.props = ${props}
-        CSSFile = ${props.includeCSS ? 'resource://Jonnitto.OutdatedBrowser/Public/Main.css' : false}
-        JSFile = ${props.includeJS && props.implementation ? 'resource://Jonnitto.OutdatedBrowser/Public/' + props.implementation + '.js' : false}
-
-        selectedLanguage = Neos.Fusion:Case {
-            hasFile {
-                documentLanguage = Neos.Fusion:Case {
-                    specificLanguageIsSet {
-                        condition = ${props.language && Type.isString(props.language)}
-                        renderer = ${props.language}
-                    }
-                    hasDimension {
-                        condition = ${Configuration.setting('Neos.ContentRepository.contentDimensions.' + props.languageDimension) != null}
-                        renderer = ${String.replace(site.context.dimensions[props.languageDimension][0], '_', '-')}
-                    }
-                    hasDefaultLocale {
-                        defaultLocale = ${Configuration.setting('Neos.Flow.i18n.defaultLocale')}
-                        condition = ${this.defaultLocale}
-                        renderer = ${String.crop(this.defaultLocale, 2)}
-                    }
-                    default {
-                        condition = true
-                        renderer = ${props.fallbackLanguage}
-                    }
-                }
-                condition = ${Array.indexOf(props.availableLanguages, String.toLowerCase(this.documentLanguage)) != -1}
-                renderer = ${String.toLowerCase(this.documentLanguage)}
+        _CSSFile = ${props.includeCSS ? 'resource://Jonnitto.OutdatedBrowser/Public/Main.css' : false}
+        _JSFile = ${props.includeJS && props.implementation ? 'resource://Jonnitto.OutdatedBrowser/Public/' + props.implementation + '.js' : false}
+        _selectedLanguage = Neos.Fusion:Case {
+            language {
+                condition = ${Array.indexOf(props.availableLanguages, props._documentLanguage) != -1}
+                renderer = ${props._documentLanguage}
             }
-            useFallbackLanguage {
-                condition = ${props.fallbackLanguage && Array.indexOf(props.availableLanguages, String.toLowerCase(props.fallbackLanguage)) != -1}
-                renderer = ${String.toLowerCase(props.fallbackLanguage)}
+            languageWithoutRegion {
+                condition = ${Array.indexOf(props.availableLanguages, props._documentLanguageWithoutRegion) != -1}
+                renderer = ${props._documentLanguageWithoutRegion}
+            }
+            fallbackLanguage {
+                condition = ${Array.indexOf(props.availableLanguages, props._fallbackLanguage) != -1}
+                renderer = ${props._fallbackLanguage}
+            }
+            fallbackLanguageWithoutRegion {
+                condition = ${Array.indexOf(props.availableLanguages, props._fallbackLanguageWithoutRegion) != -1}
+                renderer = ${props._fallbackLanguageWithoutRegion}
             }
             fallbackToEn {
                 condition = true
                 renderer = 'en'
             }
-        }
-        markup = ${File.readFile('resource://Jonnitto.OutdatedBrowser/Private/Templates/' + this.selectedLanguage + '.html')}
-        markup.@process.replaceHref = ${Jonnitto.OutdatedBrowser.replaceHref(value, props.href, this.selectedLanguage)}
 
-        featureArray = Neos.Fusion:Map {
+        }
+
+        _markup = ${File.readFile('resource://Jonnitto.OutdatedBrowser/Private/Templates/' + this._selectedLanguage + '.html')}
+        _markup.@process.replaceHref = ${Jonnitto.OutdatedBrowser.replaceHref(value, props.href, this._selectedLanguage)}
+
+        _featureArray = Neos.Fusion:Map {
             items = ${Type.isArray(props.lowerThan) ? props.lowerThan : [props.lowerThan]}
-            itemRenderer = ${Array.indexOf(Array.keys(props.presets), item) != -1 ? props.presets[item] : item}
+            itemRenderer = ${Array.indexOf(Array.keys(props._presets), item) != -1 ? props._presets[item] : item}
         }
 
-        @if.hasFeatureArray = ${this.featureArray && Type.isArray(this.featureArray)}
+        @if.hasFeatureArray = ${this._featureArray && Type.isArray(this._featureArray)}
 
         renderer = afx`
-            <div id='outdated' data-lowerthan={Array.join(props.featureArray, ',')}>
-                <style @if.set={props.CSSFile}>{File.readFile(props.CSSFile)}</style>
-                {props.markup}
-                <script @if.set={props.JSFile}>{File.readFile(props.JSFile)}</script>
+            <div id='outdated' data-lowerthan={Array.join(props._featureArray, ',')}>
+                <style @if.set={props._CSSFile}>{File.readFile(props._CSSFile)}</style>
+                {props._markup}
+                <script @if.set={props._JSFile}>{File.readFile(props._JSFile)}</script>
             </div>
         `
     }
