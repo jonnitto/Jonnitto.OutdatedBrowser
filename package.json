@@ -7,14 +7,14 @@
   "private": true,
   "dependencies": {
     "cssnano-cli": "^1.0.5",
-    "sass": "^1.49.11",
-    "uglify-js": "^3.15.3",
+    "sass": "^1.54.9",
+    "uglify-js": "^3.17.0",
     "uglifyify": "^5.0.2"
   },
   "scripts": {
     "build:js:cookie": "uglifyjs Resources/Private/Javascripts/Cookie.js --mangle --compress --output Resources/Public/Cookie.js",
     "build:js:storage": "uglifyjs Resources/Private/Javascripts/Storage.js --mangle --compress --output Resources/Public/Storage.js",
-    "build:css": "sass Resources/Private/Styles/OutdatedBrowser.scss Resources/Public/Main.css && cssnano Resources/Public/Main.css Resources/Public/Main.css --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true",
+    "build:css": "sass --no-source-map Resources/Private/Styles/OutdatedBrowser.scss Resources/Public/Main.css && cssnano Resources/Public/Main.css Resources/Public/Main.css --autoprefixer.add true --autoprefixer.browsers: '> 1%' --no-zindex --discardComments.removeAll true",
     "build": "pnpm build:css && pnpm build:js:cookie && pnpm build:js:storage",
     "start": "pnpm build"
   }
