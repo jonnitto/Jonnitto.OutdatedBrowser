@@ -1,5 +1,7 @@
 Jonnitto:
   OutdatedBrowser:
+    # Link to the service who help the user download a new browser. {locale} get replaced with the current locale
+    href: 'https://bestvpn.org/outdatedbrowser/{locale}'
     # If `true`, the warning will be disabled if the visitor is a crawler
     disableForCrawler: true
     # Set to `Storage` or `Cookie`

@@ -1,4 +1,5 @@
 prototype(Jonnitto.OutdatedBrowser:Component.Presentation) < prototype(Neos.Fusion:Component) {
+    href = ${Configuration.setting('Jonnitto.OutdatedBrowser.href')}
     lowerThan = ${Configuration.setting('Jonnitto.OutdatedBrowser.lowerThan')}
     implementation = ${Configuration.setting('Jonnitto.OutdatedBrowser.implementation')}
 
@@ -56,7 +57,7 @@ prototype(Jonnitto.OutdatedBrowser:Component.Presentation) < prototype(Neos.Fusi
             }
         }
         markup = ${File.readFile('resource://Jonnitto.OutdatedBrowser/Private/Templates/' + this.selectedLanguage + '.html')}
-        markup.@process.cleanup = ${Jonnitto.OutdatedBrowser.cleanMarkup(value)}
+        markup.@process.replaceHref = ${Jonnitto.OutdatedBrowser.replaceHref(value, props.href, this.selectedLanguage)}
 
         featureArray = Neos.Fusion:Map {
             items = ${Type.isArray(props.lowerThan) ? props.lowerThan : [props.lowerThan]}
